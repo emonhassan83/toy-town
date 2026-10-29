@@ -20,9 +20,18 @@ const ShopByCategory = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://toy-town-server-ashen.vercel.app/${activeTab}`)
+    const baseUrl =
+      import.meta.env.VITE_API_URL || "https://toy-town-server-emon83.vercel.app";
+    fetch(`${baseUrl}/${activeTab}`)
       .then((res) => res.json())
-      .then((data) => setCategoryData(data));
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setCategoryData(data);
+        } else if (data?.data && Array.isArray(data.data)) {
+          setCategoryData(data.data);
+        }
+      })
+      .catch((err) => console.log("ShopByCategory fetch error:", err));
   }, [activeTab]);
 
   const handleTabClick = (tabName) => {
@@ -77,17 +86,17 @@ const ShopByCategory = () => {
                     className="p-6 text-center"
                     data-aos="fade-up"
                   >
-                    <img className="rounded-md" src={toy.toyImage} alt="" />
+                    <img className="rounded-md" src={toy.toyImage || toy.img} alt="" />
                     <h4 className="text-lg font-bold mt-6 mb-2">
-                      {toy.toyName}
+                      {toy.toyName || toy.product_name}
                     </h4>
                     <p className="">Price: ${toy.price}</p>
                     <div className="flex justify-center items-center my-4">
-                      <Rating style={{ maxWidth: 100 }} value={5} />
-                      <p>{toy.rating}</p>
+                      <Rating style={{ maxWidth: 100 }} value={toy.rating || 5} />
+                      <p>{toy.rating || 5}</p>
                     </div>
                     {email ? (
-                      <Link to={`categoryToyDetails/${toy._id}`}>
+                      <Link to={`/product-details/${toy._id}`}>
                         <button className="btn bg-pink-500 hover:bg-pink-600 border-none h-4 rounded-3xl btn-sm px-4">
                           View Details
                         </button>
@@ -115,17 +124,17 @@ const ShopByCategory = () => {
                     className="p-6 text-center"
                     data-aos="fade-up"
                   >
-                    <img className="rounded-md" src={toy.toyImage} alt="" />
+                    <img className="rounded-md" src={toy.toyImage || toy.img} alt="" />
                     <h4 className="text-lg font-bold mt-6 mb-2">
-                      {toy.toyName}
+                      {toy.toyName || toy.product_name}
                     </h4>
                     <p className="">Price: ${toy.price}</p>
                     <div className="flex justify-center items-center my-4">
-                      <Rating style={{ maxWidth: 100 }} value={5} />
-                      <p>{toy.rating}</p>
+                      <Rating style={{ maxWidth: 100 }} value={toy.rating || 5} />
+                      <p>{toy.rating || 5}</p>
                     </div>
                     {email ? (
-                      <Link to={`categoryToyDetails/${toy._id}`}>
+                      <Link to={`/product-details/${toy._id}`}>
                         <button className="btn bg-pink-500 hover:bg-pink-600 border-none h-4 rounded-3xl btn-sm px-4">
                           View Details
                         </button>
@@ -153,17 +162,17 @@ const ShopByCategory = () => {
                     className="p-6 text-center"
                     data-aos="fade-up"
                   >
-                    <img className="rounded-md" src={toy.toyImage} alt="" />
+                    <img className="rounded-md" src={toy.toyImage || toy.img} alt="" />
                     <h4 className="text-lg font-bold mt-6 mb-2">
-                      {toy.toyName}
+                      {toy.toyName || toy.product_name}
                     </h4>
                     <p className="">Price: ${toy.price}</p>
                     <div className="flex justify-center items-center my-4">
-                      <Rating style={{ maxWidth: 100 }} value={5} />
-                      <p>{toy.rating}</p>
+                      <Rating style={{ maxWidth: 100 }} value={toy.rating || 5} />
+                      <p>{toy.rating || 5}</p>
                     </div>
                     {email ? (
-                      <Link to={`categoryToyDetails/${toy._id}`}>
+                      <Link to={`/product-details/${toy._id}`}>
                         <button className="btn bg-pink-500 hover:bg-pink-600 border-none h-4 rounded-3xl btn-sm px-4">
                           View Details
                         </button>

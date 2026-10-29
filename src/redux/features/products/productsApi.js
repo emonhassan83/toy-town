@@ -8,6 +8,7 @@ const productApi = baseApi.injectEndpoints({
         method: "POST",
         body: product,
       }),
+      invalidatesTags: ["Product"],
     }),
 
     paymentProduct: builder.mutation({
@@ -16,6 +17,7 @@ const productApi = baseApi.injectEndpoints({
         method: "POST",
         body: productData,
       }),
+      invalidatesTags: ["Payment", "Cart", "Product"],
     }),
 
     getProducts: builder.query({
@@ -25,14 +27,17 @@ const productApi = baseApi.injectEndpoints({
 
     getProductsByCategory: builder.query({
       query: (category) => `/allProducts/${category}`,
+      providesTags: ["Product"],
     }),
 
     getProductsById: builder.query({
       query: (id) => `/productDetails/${id}`,
+      providesTags: ["Product"],
     }),
 
     getProductsByEmail: builder.query({
       query: (email) => `/myProducts/${email}`,
+      providesTags: ["Product"],
     }),
 
     deleteProduct: builder.mutation({
@@ -48,7 +53,7 @@ const productApi = baseApi.injectEndpoints({
         url: `/deleteCartProduct/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Product"],
+      invalidatesTags: ["Cart"],
     }),
 
     updateProduct: builder.mutation({
@@ -66,6 +71,7 @@ const productApi = baseApi.injectEndpoints({
         method: "POST",
         body: product,
       }),
+      invalidatesTags: ["Cart"],
     }),
 
     saveReviewProduct: builder.mutation({
@@ -74,30 +80,22 @@ const productApi = baseApi.injectEndpoints({
         method: "POST",
         body: product,
       }),
+      invalidatesTags: ["Review", "Product"],
     }),
 
     getReviewProduct: builder.query({
       query: (id) => `/reviewProduct/${id}`,
+      providesTags: ["Review"],
     }),
 
     getCartProducts: builder.query({
       query: (email) => `/cartProducts/${email}`,
-      // options: {
-      //   fetchBaseQuery: {
-      //     // Replace with your server's URL
-      //     // baseUrl: "http://localhost:5000",
-      //     // Include credentials: "include" if necessary
-      //     // credentials: "include",
-      //     // Additional headers if needed (e.g., authorization headers)
-      //     headers: {
-      //       authorization: `bearer ${localStorage.getItem('access_token')}`, // Retrieve the token from localStorage
-      //     },
-      //   },
-      // },
+      providesTags: ["Cart"],
     }),
     
     getPaymentProduct: builder.query({
       query: (email) => `/payment/${email}`,
+      providesTags: ["Payment"],
     }),
 
     approveProduct: builder.mutation({

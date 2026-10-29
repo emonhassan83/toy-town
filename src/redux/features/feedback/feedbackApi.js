@@ -8,9 +8,11 @@ const feedbackApi = baseApi.injectEndpoints({
         method: "POST",
         body: feedbackData,
       }),
+      invalidatesTags: ["Feedback"],
     }),
     getFeedback: builder.query({
       query: () => "/feedbacks",
+      providesTags: ["Feedback"],
     }),
   }),
 });

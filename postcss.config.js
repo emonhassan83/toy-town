@@ -4,6 +4,7 @@ const require = createRequire(import.meta.url);
 
 export default {
   plugins: {
+    'tailwindcss/nesting': {},
     tailwindcss: {},
     autoprefixer: {},
   },

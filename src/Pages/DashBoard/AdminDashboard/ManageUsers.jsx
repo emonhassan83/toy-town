@@ -2,6 +2,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import {
   useDeleteUserMutation,
   useGetUsersQuery,
+  useMakeAdminMutation,
   useMakeSellerMutation,
   useMakeUserMutation,
 } from "../../../redux/features/user/userApi";
@@ -11,7 +12,7 @@ import useTitle from "../../../hooks/useTitle";
 const ManageUsers = () => {
   const { data: users, isLoading, error } = useGetUsersQuery();
   const [makeSeller] = useMakeSellerMutation();
-  const [makeAdmin] = useMakeSellerMutation();
+  const [makeAdmin] = useMakeAdminMutation();
   const [makeUser] = useMakeUserMutation();
   const [deleteUser] = useDeleteUserMutation();
   // Use tile by custom useTitle Hook
@@ -98,19 +99,14 @@ const ManageUsers = () => {
                       </button>
                     </div>
                   </td>
-                  <td>
+                  <th>
                     <button
-                      disabled={user.role === "admin"}
-                      className={`${
-                        user.role === "admin"
-                          ? "text-gray-300"
-                          : "text-[#22889c]"
-                      }`}
                       onClick={() => handleDeleteUser(user._id)}
+                      className="btn btn-ghost btn-xs text-xl"
                     >
-                      <RiDeleteBin6Line className=" w-6 h-5 mx-auto" />
+                      <RiDeleteBin6Line />
                     </button>
-                  </td>
+                  </th>
                 </tr>
               ))}
             </tbody>

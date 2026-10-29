@@ -1,4 +1,5 @@
-import Lottie from "react-lottie";
+/* eslint-disable no-unused-vars */
+import Lottie from "lottie-react";
 import animation from "../../assets/animation_login.json";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -128,7 +129,7 @@ const Login = () => {
         </div>
       </div>
       <div className="md:w-1/2">
-        <Lottie options={defaultOptions} height={475} width={370} />
+        <Lottie animationData={animation} loop={true} style={{ height: 475, width: 370 }} />
       </div>
     </div>
   );

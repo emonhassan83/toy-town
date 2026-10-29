@@ -51,6 +51,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/categoryToyDetails/:id",
+        element: (
+          <PrivateRoute>
+            <ProductDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/shop/product-details/:id",
         element: (
           <PrivateRoute>
@@ -113,7 +121,6 @@ const router = createBrowserRouter([
         path: "/dashboard/payment",
         element: <Payment />,
       },
-      //! TODO:
       {
         path: "/dashboard/payment-history",
         element: <PaymentHistory />,
@@ -147,10 +154,6 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/manage-users",
         element: <ManageUsers />,
-      },
-      {
-        path: "/dashboard/add-product",
-        element: <AddProduct />,
       },
       {
         path: "/dashboard/manage-products",

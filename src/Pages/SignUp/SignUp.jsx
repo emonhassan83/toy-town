@@ -1,4 +1,4 @@
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import animation from "../../assets/animation_login.json";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./SignUp.css";
@@ -186,7 +186,7 @@ const SignUp = () => {
         </div>
       </div>
       <div className="md:w-1/2">
-        <Lottie options={defaultOptions} height={475} width={370} />
+        <Lottie animationData={animation} loop={true} style={{ height: 475, width: 370 }} />
       </div>
     </div>
   );

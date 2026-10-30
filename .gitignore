@@ -1,27 +1,69 @@
-# Logs
-logs
+# ==========================================
+# Toy Town - Monorepo .gitignore
+# ==========================================
+
+# Dependencies
+node_modules/
+*/node_modules/
+.pnp
+.pnp.js
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+*.env
+client/.env
+client/.env.local
+server/.env
+server/_user_credintial.txt
+
+# Production Build Outputs
+dist/
+client/dist/
+server/dist/
+build/
+out/
+
+# Vite & Bundler Caches
+.vite/
+client/.vite/
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+
+# Hosting & Serverless Metadata
+.vercel/
+client/.vercel/
+server/.vercel/
+.firebase/
+client/.firebase/
+
+# Logs & Debugging
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Testing & Coverage
+coverage/
+*.lcov
+.nyc_output
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# OS & IDE Metadata
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-branch_structure.json
-temp_auto_push.bat
-temp_interactive_push.bat
+
+# Scratch & Temporary Files
+scratch/
+tmp/
+temp/
